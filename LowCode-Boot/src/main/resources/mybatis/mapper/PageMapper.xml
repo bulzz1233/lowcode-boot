@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lowcode.lowcodeboot.mapper.PageMapper">
+    <update id="updatePage">
+        update page set page_Name = #{pageName}  where page_Id = #{pageId} and uid =#{uid}
+    </update>
+    <delete id="deletePage">
+        delete from page where page_Id = #{pageId} and uid = #{uid}
+
+    </delete>
+
+    <select id="allPage" resultType="com.lowcode.lowcodeboot.bean.vo.PageVO">
+        select * from page where uid = #{uid} and project_Id = #{projectId}
+    </select>
+</mapper>

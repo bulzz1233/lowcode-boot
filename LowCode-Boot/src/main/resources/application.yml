@@ -1,0 +1,50 @@
+server:
+  #调整服务端端口号
+  port: 8888
+#数据库连接池配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #这里需要改成自己的数据库地址
+    url: jdbc:mysql://localhost:3306/lowcode?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化配置
+      initial-size: 5
+      # 最小连接数
+      min-idle: 1
+      # 最大连接数
+      max-active: 20
+      #等待时间
+      max-wait: 60000
+      validation-query: select 1
+
+  jackson:
+    #你添加的时间字符串转为yyy-MM-dd格式的date；返回前端的时候转为yyy-MM-dd格式的字符串
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+#mybatis配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    call-setters-on-nulls: true
+
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+  type-aliases-package: com.com.lowcode.lowcodeboot.bean
+#不需要权限校验的请求
+auth:
+  ignoreUrls:
+    - /index.html
+    - /**
+    - /user/login
+    - /user/register
+    - /favicon.ico
+    - /css/**
+    - /js/**
+    - /img/**
+    - /fonts/**
+    - /api/**
+    - /media/**
+

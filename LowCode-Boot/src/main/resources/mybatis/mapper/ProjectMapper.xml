@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lowcode.lowcodeboot.mapper.ProjectMapper">
+    <update id="updateProject">
+        update project set title = #{title} , type =#{type} , func_Box_Is_Show =#{funcBoxIsShow} where project_Id = #{projectId} and uid =#{uid}
+
+    </update>
+    <delete id="delProject">
+        delete from project where project_Id = #{projectId} and uid = #{uid}
+
+    </delete>
+
+    <select id="all" resultType="com.lowcode.lowcodeboot.bean.vo.ProjectVO">
+        select * from project where uid = #{uid}
+    </select>
+</mapper>
