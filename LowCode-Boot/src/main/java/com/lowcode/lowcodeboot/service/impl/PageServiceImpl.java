@@ -1,5 +1,8 @@
 package com.lowcode.lowcodeboot.service.impl;
 
+import com.lowcode.lowcodeboot.bean.entity.PageDO;
+import com.lowcode.lowcodeboot.bean.entity.UserDO;
+import com.lowcode.lowcodeboot.bean.req.Page.AddPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.AllPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.DeletePageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.UpdatePageReq;
@@ -9,6 +12,7 @@ import com.lowcode.lowcodeboot.mapper.PageMapper;
 import com.lowcode.lowcodeboot.service.PageService;
 import com.lowcode.lowcodeboot.util.PagerUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,5 +39,12 @@ public class PageServiceImpl implements PageService {
     public void deletePage(DeletePageReq deletePageReq) {
         pageMapper.deletePage(deletePageReq);
 
+    }
+
+    @Override
+    public void addPage(AddPageReq addPageReq) {
+        PageDO pageDO = new PageDO();
+        BeanUtils.copyProperties(addPageReq,pageDO);
+        pageMapper.insert(pageDO);
     }
 }

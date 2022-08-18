@@ -1,5 +1,6 @@
 package com.lowcode.lowcodeboot.service;
 
+import com.lowcode.lowcodeboot.bean.req.Page.AddPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.AllPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.DeletePageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.UpdatePageReq;
@@ -14,4 +15,6 @@ public interface PageService {
     void updatePage(UpdatePageReq updatePageReq);
 
     void deletePage(DeletePageReq deletePageReq);
+
+    void addPage(AddPageReq addPageReq);
 }

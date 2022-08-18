@@ -18,7 +18,7 @@ import java.util.Calendar;
 @Slf4j
 public class JwtUtil {
     //保存生成的密钥
-    private static final String SECRET = "qing.com";
+    private static final String SECRET = "lowCode.com";
 
     public static <T> String getToken(T t) {
         Calendar instance = Calendar.getInstance();

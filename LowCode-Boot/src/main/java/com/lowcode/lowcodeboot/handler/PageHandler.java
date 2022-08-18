@@ -1,12 +1,15 @@
 package com.lowcode.lowcodeboot.handler;
 
+import com.lowcode.lowcodeboot.bean.req.Page.AddPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.AllPageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.DeletePageReq;
 import com.lowcode.lowcodeboot.bean.req.Page.UpdatePageReq;
+import com.lowcode.lowcodeboot.bean.req.User.UserAddReq;
 import com.lowcode.lowcodeboot.bean.res.Result;
 import com.lowcode.lowcodeboot.bean.vo.PageVO;
 import com.lowcode.lowcodeboot.service.PageService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +44,11 @@ public class PageHandler {
         }
         pageService.deletePage(deletePageReq);
         return Result.buildSuccess("删除成功");
+    }
+    @PostMapping("/addPage")
+    public Result<String> addPage(@RequestBody @Validated AddPageReq addPageReq){
+        log.info("login params:{}", addPageReq);
+        pageService.addPage(addPageReq);
+        return Result.buildSuccess("添加成功");
     }
 }
